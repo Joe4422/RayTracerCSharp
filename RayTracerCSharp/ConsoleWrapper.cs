@@ -24,5 +24,9 @@ namespace RayTracerCSharp
             Console.Write(s);
             Console.SetCursorPosition(cursorPos.X, cursorPos.Y);
         }
+        public void DrawLine(Line<int> l)
+        {
+
+        }
     }
 }

@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace RayTracerCSharp
 {
-    public class Line
+    public class Line<T>
     {
-        public Point<double> FirstPoint { get; private set; }
-        public Point<double> SecondPoint { get; private set; }
+        public Point<T> FirstPoint { get; private set; }
+        public Point<T> SecondPoint { get; private set; }
 
-        public Line(Point<double> firstPoint, Point<double> secondPoint)
+        public Line(Point<T> firstPoint, Point<T> secondPoint)
         {
             FirstPoint = firstPoint;
             SecondPoint = secondPoint;
         }
 
-        public LineEquation GetEquation()
+        public static LineEquation GetEquation(Line<double> line)
         {
-            double diffX = FirstPoint.X - SecondPoint.X;
-            double diffY = FirstPoint.Y - SecondPoint.Y;
+            double diffX = line.FirstPoint.X - line.SecondPoint.X;
+            double diffY = line.FirstPoint.Y - line.SecondPoint.Y;
             double m = diffY / diffX;
-            double c = FirstPoint.Y - m * FirstPoint.X;
+            double c = line.FirstPoint.Y - m * line.FirstPoint.X;
             return new LineEquation(m, c);
         }
     }
