@@ -17,16 +17,23 @@ namespace RayTracerCSharp
             Console.CursorVisible = false;
         }
 
-        public void WriteToPoint(Point<int> p, string s)
+        public void WriteToPoint(Point p, string s)
         {
-            Point<int> cursorPos = new Point<int>(Console.CursorLeft, Console.CursorTop);
+            Point cursorPos = new Point(Console.CursorLeft, Console.CursorTop);
             Console.SetCursorPosition(p.X, p.Y);
             Console.Write(s);
             Console.SetCursorPosition(cursorPos.X, cursorPos.Y);
         }
-        public void DrawLine(Line<int> l)
+        public void DrawVerticalLine(Line l, char c)
         {
-
+            if (l.DX != 0) throw new ArgumentException("Line is not vertical!");
+            else
+            {
+                for (int y = l.SmallerY.Y; y <= l.LargerY.Y; y++)
+                {
+                    WriteToPoint(new Point(l.FirstPoint.X, y), c.ToString());
+                }
+            }
         }
     }
 }

@@ -11,6 +11,7 @@ namespace RayTracerCSharp
         static void Main(string[] args)
         {
             ConsoleWrapper cw = new ConsoleWrapper();
+            cw.DrawVerticalLine(new Line(new Point(5, 5), new Point(5, 10)), '#');
             Console.ReadLine();
         }
     }

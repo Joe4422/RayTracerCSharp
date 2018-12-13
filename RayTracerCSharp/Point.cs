@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace RayTracerCSharp
 {
-    public class Point<T>
+    public class Point
     {
-        public T X { get; private set; }
-        public T Y { get; private set; }
+        public int X { get; private set; }
+        public int Y { get; private set; }
 
-        public Point(T x, T y)
+        public Point(int x, int y)
         {
             X = x;
             Y = y;

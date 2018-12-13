@@ -16,5 +16,11 @@ namespace RayTracerCSharp
             Gradient = gradient;
             Offset = offset;
         }
+
+        public LineEquation(Line l)
+        {
+            Gradient = (double)l.DY / l.DX;
+            Offset = l.FirstPoint.Y - Gradient * l.FirstPoint.X;
+        }
     }
 }
