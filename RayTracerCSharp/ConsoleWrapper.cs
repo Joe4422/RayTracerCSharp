@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace RayTracerCSharp
@@ -15,7 +16,17 @@ namespace RayTracerCSharp
         {
             Console.BufferHeight = Console.WindowHeight;
             Console.CursorVisible = false;
+
+            new Thread(() => {
+                while (true)
+                {
+                    var e = Console.ReadKey(true);
+                    OnKeyPressed(new KeyPressedEventArgs(e));
+                }
+            }).Start();
         }
+
+        public void Clear() => Console.Clear();
 
         public void WriteToPoint(Point p, string s)
         {
@@ -34,6 +45,22 @@ namespace RayTracerCSharp
                     WriteToPoint(new Point(l.FirstPoint.X, y), c.ToString());
                 }
             }
+        }
+
+        public event EventHandler<KeyPressedEventArgs> KeyPressed;
+
+        protected virtual void OnKeyPressed(KeyPressedEventArgs e) => KeyPressed?.Invoke(this, e);
+
+       
+    }
+
+    public class KeyPressedEventArgs : EventArgs
+    {
+        public ConsoleKeyInfo KeyInfo { get; private set; }
+
+        public KeyPressedEventArgs(ConsoleKeyInfo keyInfo)
+        {
+            KeyInfo = keyInfo;
         }
     }
 }

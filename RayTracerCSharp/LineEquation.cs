@@ -22,5 +22,12 @@ namespace RayTracerCSharp
             Gradient = (double)l.DY / l.DX;
             Offset = l.FirstPoint.Y - Gradient * l.FirstPoint.X;
         }
+
+        public Point GetIntersection(LineEquation l)
+        {
+            double x = l.Gradient + (l.Offset / Gradient) - (Offset / Gradient);
+            double y = Gradient * x + Offset;
+            return new Point((int)x, (int)y);
+        }
     }
 }
