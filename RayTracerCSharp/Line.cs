@@ -8,10 +8,10 @@ namespace RayTracerCSharp
 {
     public class Line
     {
-        public Point FirstPoint { get; private set; }
-        public Point SecondPoint { get; private set; }
+        public Point<double> FirstPoint { get; private set; }
+        public Point<double> SecondPoint { get; private set; }
 
-        public Line(Point firstPoint, Point secondPoint)
+        public Line(Point<double> firstPoint, Point<double> secondPoint)
         {
             FirstPoint = firstPoint;
             SecondPoint = secondPoint;

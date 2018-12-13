@@ -10,6 +10,8 @@ namespace RayTracerCSharp
     {
         static void Main(string[] args)
         {
+            ConsoleWrapper cw = new ConsoleWrapper();
+            Console.ReadLine();
         }
     }
 }
